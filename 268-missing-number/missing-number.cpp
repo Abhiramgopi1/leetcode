@@ -2,10 +2,9 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         map<int,int>mp;
-        int k=0;
+        int k=nums.size();
         for(auto i: nums){
             mp[i]++;
-            k++;
         }
         int i=1;
         while(i<=k){
