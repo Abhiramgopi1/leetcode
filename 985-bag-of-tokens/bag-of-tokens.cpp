@@ -5,14 +5,6 @@ public:
         int sc=0;
         int i=0;
         int j=tokens.size()-1;
-        if(tokens.size()==1){
-            if(tokens[0]<power){
-                return 1;
-            }
-            else{
-                return 0;
-            }
-        }
         while(i<=j){
             
             if(tokens[i]<=power){
