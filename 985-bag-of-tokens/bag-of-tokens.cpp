@@ -13,7 +13,7 @@ public:
                 i++;
             }
             else if(sc>0 and i==j){
-                i++;
+                break;
             }
             else if(sc>0 and tokens[i]>power){
                 power+=tokens[j];
@@ -21,7 +21,7 @@ public:
                 j--;
             }
             else{
-                i++;
+                break;
             }
 
         }
