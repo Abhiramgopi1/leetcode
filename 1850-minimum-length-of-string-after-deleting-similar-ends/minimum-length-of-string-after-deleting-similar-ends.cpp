@@ -1,6 +1,7 @@
 class Solution {
 public:
     int minimumLength(string s) {
+         ios_base::sync_with_stdio(0);
         int i=0 , n = s.length();
         int j=n-1;
         int c=0;
