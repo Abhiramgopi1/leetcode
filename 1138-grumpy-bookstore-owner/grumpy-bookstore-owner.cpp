@@ -4,22 +4,28 @@ public:
         int c=0;
         int n=customers.size();
         for(int i=0;i<n;i++){
-            if(grumpy[i]==0) c+=customers[i];
-        }
-        int m=c;
-        for(int i=0;i<n;i++){
-            int sum=0;
-            if(grumpy[i] == 1)
-            {
-                int a = minutes;
-                for(int j=i;j<n and a--;j++){
-                    if(grumpy[j]==1) {
-                        sum+=customers[j];
-                    }
-                    m = max(c+sum , m);
-                }
+            if(grumpy[i]==0) {
+                c+=customers[i];
+                customers[i]=0;
             }
         }
+        int s=0,i=0;
+        while(i<minutes){
+            s+=customers[i];
+            i++;
+        }
+        int m=s;
+        while(i<n){
+            s-=customers[i-minutes];
+            s+=customers[i];
+            i++;
+            m=max(m,s);
+        }
+
+        return m+c;
+
+
+
 
         return m;
     }
