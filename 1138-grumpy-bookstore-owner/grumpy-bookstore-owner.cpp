@@ -6,19 +6,21 @@ public:
         for(int i=0;i<n;i++){
             if(grumpy[i]==0) c+=customers[i];
         }
-        int m=0;
-        for(int i=0;i<n-minutes+1;i++){
+        int m=c;
+        for(int i=0;i<n;i++){
             int sum=0;
-            int k=i;
-            for(int j=0;j<minutes;j++){
-                if(grumpy[k]==1) {
-                    sum+=customers[k];
-                    m=max(sum,m);
+            if(grumpy[i] == 1)
+            {
+                int a = minutes;
+                for(int j=i;j<n and a--;j++){
+                    if(grumpy[j]==1) {
+                        sum+=customers[j];
+                    }
+                    m = max(c+sum , m);
                 }
-                k++;
             }
         }
 
-        return c+m;
+        return m;
     }
 };
