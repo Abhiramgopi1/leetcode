@@ -12,26 +12,21 @@ class Solution {
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
         vector<int>v;
-        while(head){
-            v.push_back(head->val);
+        int c=1;
+        while(head->next->next){
+            int k=head->val;
             head=head->next;
+            c++;
+            int l=head->val;
+            int m=head->next->val;
+            if(l<k and l<m) v.push_back(c);
+            if(l>k and l>m) v.push_back(c);
         }
         int n=v.size();
-        vector<int>ans;
-        if(n<3) return {-1,-1};
-        for(int i=1;i<n-1;i++){
-            if(v[i]<v[i-1] and v[i]<v[i+1]){
-                ans.push_back(i+1);
-            }
-            if(v[i]>v[i-1] and v[i]>v[i+1]){
-                ans.push_back(i+1);
-            }
-        }
-        int m=ans.size();
-        if(m<=1) return {-1,-1};
-        int mi=INT_MAX,ma=ans[m-1]-ans[0];
-        for(int i=0;i<ans.size()-1;i++){
-            mi=min(mi,ans[i+1]-ans[i]);
+        if(n<=1) return {-1,-1};
+        int mi=INT_MAX,ma=v[n-1]-v[0];
+        for(int i=0;i<n-1;i++){
+            mi=min(mi,v[i+1]-v[i]);
         }
         return {mi,ma};
 
