@@ -7,11 +7,11 @@ public:
             if(i<n and k==0){
                 i++;
             }
-            else if(i==n and k==0){
-                k=1;
+            else if(i>1 and k==1){
                 i--;
             }
-            else if(i>1 and k==1){
+            else if(i==n and k==0){
+                k=1;
                 i--;
             }
             else if(i==1 and k==1){
