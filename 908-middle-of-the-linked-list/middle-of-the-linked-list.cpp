@@ -11,26 +11,32 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        vector<int>v;
-        vector<int>v1;
-        ListNode* temp=head;
-        while(temp!=NULL){
-            v.push_back(temp->val);
-            temp=temp->next;
-        }
-        int n=v.size();
-        for(int i=0;i<n;i++){
-            if(i>=n/2){
-                v1.push_back(v[i]);
+       int c=0;
+       ListNode* temp=head;
+       ListNode* t=head;
+       while(temp){
+        c++;
+        temp=temp->next;
+       }
+
+       ListNode* ans=NULL;
+       ListNode* t1=ans;
+       int k=0;
+       while(t){
+        if(k>=c/2){
+            if(ans==NULL){
+                ans=new ListNode(t->val);
+                t1=ans;
+            }
+            else{
+                ListNode* te=new ListNode(t->val);
+                t1->next=te;
+                t1=t1->next;
             }
         }
-        ListNode* head1=NULL;
-        for(int i=v1.size()-1;i>=0;i--){
-            ListNode* t= new ListNode;
-            t->val=v1[i];
-            t->next= head1;
-            head1=t;
-        }
-        return head1;
+        k++;
+        t=t->next;
+       }
+       return ans;
     }
 };
