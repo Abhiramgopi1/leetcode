@@ -10,18 +10,12 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
         if(head==NULL) return false;
-        ListNode *temp=head;
-        map<int,int>mp;
+        ListNode *t=head;
         int c=0;
-        while(temp->next!=NULL){
-            int k=temp->val;
-            int l=temp->next->val;
-            mp[k]++;
-            temp=temp->next;
-            if(mp[l]>=5){
-                return true;
-                break;
-            }
+        while(t){
+            c++;
+            if(c>10000) return true;
+            t=t->next;
         }
         return false;
         
