@@ -10,20 +10,28 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode* temp=head;
-        vector<int>v;
-        while(temp!=NULL){
-            v.push_back(temp->val);
-            temp=temp->next;
+    ListNode *ans = NULL , *ptr = NULL;
+    void rev(ListNode* head){
+        if(head==NULL){
+            return ;
         }
-        ListNode* ans=NULL;
-        for(int i=0;i<v.size();i++){
-            ListNode* t= new ListNode;
-            t->val=v[i];
-            t->next=ans;
+        rev(head->next);
+        ListNode* t=new ListNode(head->val);
+        // cout<<t->val<<" ";
+        if(ans==NULL){
             ans=t;
+            ptr=ans;
         }
+        else{
+            ptr->next=t;
+            ptr = ptr->next;
+        }
+        // cout<<ans->val<<" ";
+    }
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL) return NULL;
+        if(head->next==NULL) return head;
+        rev(head);
         return ans;
         
     }
