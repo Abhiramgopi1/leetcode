@@ -10,39 +10,26 @@
  */
 class Solution {
 public:
-    ListNode* rev(ListNode* head){
-        ListNode* next=NULL;
-        ListNode* cur=head;
-        ListNode* prev=NULL;
-        while(cur!=NULL){
-            next=cur->next;
-            cur->next=prev;
-            prev=cur;
-            cur=next;
-        }
-        return prev;
-    }
+    
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         if(head->next==NULL) return NULL;
-        ListNode* ans=head;
-        if(n==1){
-            while(ans->next->next!=NULL){
-                ans=ans->next;
-            }
-            ans->next=NULL;
-            return head; 
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(n--){
+            fast=fast->next;
+            if(fast==NULL) return head->next;
         }
-        ans=rev(ans);
-        ListNode* ptr=ans;
-        while(ptr!=NULL and n>2){
-            n--;
-            ptr=ptr->next;
+
+        while(fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next;
         }
-        ListNode* deleNode=ptr->next;
-        ptr->next=deleNode->next;
-        delete (deleNode);
-        ans=rev(ans);
-        return ans;
+
+        ListNode* deleteNode=slow->next;
+        slow->next=deleteNode->next;
+        delete(deleteNode);
+
+        return head;
         
     }
 };
