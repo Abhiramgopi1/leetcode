@@ -6,26 +6,12 @@ public:
         vector<vector<int>>ans(n,vector<int>(m,0));
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(rowSum[i]<colSum[j]){
-                    ans[i][j]=rowSum[i];
-                    colSum[j]-=rowSum[i];
-                    rowSum[i]=0;
-                }
-                else if(rowSum[i]==colSum[j]){
-                    ans[i][j]=rowSum[i];
-                    colSum[j]=0;
-                    rowSum[i]=0;
-                }
-                else if(rowSum[i]>colSum[j]){
-                    ans[i][j]=colSum[j];
-                    rowSum[i]-=colSum[j];
-                    colSum[j]=0;
-                }
+                int mini=min(rowSum[i],colSum[j]);
+                ans[i][j]=mini;
+                rowSum[i]-=mini;
+                colSum[j]-=mini;
             }
         }
-
-
-
         return ans;
     }
 };
