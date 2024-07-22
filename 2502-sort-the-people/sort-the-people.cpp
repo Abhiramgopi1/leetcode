@@ -8,8 +8,7 @@ public:
             int k=heights[i];
             mp[k]=s;
         }
-        sort(heights.begin(),heights.end());
-        reverse(heights.begin(),heights.end());
+        sort(heights.rbegin(),heights.rend());
         vector<string>ans;
         for(auto i: heights){
             ans.push_back(mp[i]);
