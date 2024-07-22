@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
-        map<int,string>mp;
+        unordered_map<int,string>mp;
         int n=names.size();
         for(int i=0;i<n;i++){
             string s=names[i];
