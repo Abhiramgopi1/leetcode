@@ -5,13 +5,13 @@ public:
         for(auto i: arr){
             mp[i]++;
         }
-        vector<string>v;
+        
         for(auto i: arr){
-            if(mp[i]==1) v.push_back(i);
+            if(mp[i]==1) k--;
+            if(k==0) return i;
         }
-        if(v.size()<k) return "";
-        string ans=v[k-1];
-        return ans;        
+
+        return "";      
 
     }
 };
