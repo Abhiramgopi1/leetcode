@@ -16,7 +16,6 @@ public:
 
         int j=0,p=1,c=0;
         for(auto i: v){
-            cout<<i<<" ";
             c+=p*i;
             j++;
             if(j==8) p=2;
