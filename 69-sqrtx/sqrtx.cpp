@@ -1,20 +1,12 @@
 class Solution {
 public:
     long long mySqrt(long long x) {
-        long long mi=INT_MAX;
-        if(x==1) return 1;
-        for(long long i=1;i<=x/2;i++){
-            if((i*i)<=x){
-                mi=min(mi,abs((i*i)-x));
-            }
-            else if((i*i) > x){
-                break;
-            }
-            
-        }
-        for(long long i=1;i<=x/2;i++){
-            if(abs((i*i)-x)==mi) return i;
+        if(x==1 or x==0) return x;
+        for(long long int i=1;i<=x;i++){
+            if(i*i==x) return i;
+            else if(i*i>x) return i-1;
         }
         return 0;
     }
+
 };
