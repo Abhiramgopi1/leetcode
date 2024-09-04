@@ -1,28 +1,29 @@
 class Solution {
 public:
     int getLucky(string s, int k) {
-        string s1="";
-        unordered_map<int,int>mp;
-        int c=1;
-        for(int i=49;i<=75;i++){
-            mp[i]=c;
-            c++;
-        }
-        for(auto i: s){
-            int k=i-'0';
-            s1+=to_string(mp[k]);
+        
+        long long ans=0;
+        for(char i: s){
+            int k=i-'a'+1;
+            while(k){
+                int d=k%10;
+                ans+=d;
+                k=k/10;
+            }
         }
 
-        long long ans=0;
-        
-        while(k--){
+        int l=ans;
+
+        while(k>1){
             ans=0;
-            for(auto i: s1){
-                string g=to_string(i);
-                ans+=mp[stoi(g)];
+            while(l){
+                int d=l%10;
+                ans+=d;
+                l=l/10;
             }
-            s1=to_string(ans);
+            l=ans;
+            k--;
         }
-        return ans;
+        return l;
     }
 };
